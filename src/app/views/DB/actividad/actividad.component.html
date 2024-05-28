@@ -1,0 +1,106 @@
+  <!--creacion de la FORMULARIOS ACTIVIDADES-->
+  <c-row>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+          <strong>Formulario Actividades</strong> 
+        </c-card-header>
+        <c-card-body>
+            <form cForm class="row g-3">
+              <c-col md="4">
+                <label cLabel for="nomactividad">Nombre Actividad</label>
+                <input name="nomactividad" cFormControl id="nomactividad" type="text" 
+                [(ngModel)]="actividadModelo.actividad"/>
+              </c-col>
+              <c-col md="4">
+                <label cLabel for="tipo">Tipo</label>
+                <select name="tipo" [(ngModel)]="actividadModelo.idtipo" cSelect id="tipo">
+                  <option value="664f49d3f44e555556974f22">Social</option>
+                  <option value="664f4a42f44e555556974f26">Pastoral</option>
+                  <option value="664f4a1bf44e555556974f24">Pedagogico</option>
+                  <option value="664f4a7ef44e555556974f28">Gratitud</option>
+                </select>
+              </c-col>
+              <c-col md="4">
+                <label cLabel for="responsable">Responsable</label>
+                <select name="responsable" [(ngModel)]="actividadModelo.idresponsable" cSelect id="responsable">
+                  <option value="664ea6dc9d5b56d4b72a28ff">Prof. Jhonatan</option>
+                  <option value="664eb3f99d5b56d4b72a2907">Prof. Tania</option>
+                  <option value="664eb54c9d5b56d4b72a290a">Prof. Naira</option>
+                  <option value="664f510660a5792ba2d95616">Prof. Indira</option>
+                </select>
+              </c-col>
+              <c-col md="6">
+                <label cLabel for="participantes">Participantes</label>
+                <input name="participantes" cFormControl id="participantes" type="text" [(ngModel)]="actividadModelo.participantes"/>
+              </c-col>
+              <c-col xs="6" md="3">
+                <label cLabel for="fecha">Fecha</label>
+                <input name="fecha" cFormControl id="fecha" type="text" [(ngModel)]="actividadModelo.fecha"/>
+             </c-col>
+              <c-col xs="6" md="3">
+                <label cLabel for="hora">Hora</label>
+                <input name="hora" cFormControl id="hora" type="text" [(ngModel)]="actividadModelo.hora"/>
+              </c-col>
+              <c-col xs="12">
+                <label cLabel for="descripcion">Descripción</label>
+                <input name="descripcion" cFormControl id="descripcion" placeholder="Describe la actividad" [(ngModel)]="actividadModelo.descripcion"/>
+              </c-col>
+              <c-col xs="12">
+                <label cLabel for="observacion">Observación</label>
+                <input name="observacion" cFormControl id="observacion" placeholder="Aspectos importantes" [(ngModel)]="actividadModelo.observacion" />
+              </c-col>
+              <c-col md="12">
+                <label cLabel for="usuario">Usuario</label>
+                <select name="usuario" [(ngModel)]="actividadModelo.usuario" cSelect id="usuario">
+                  <option value="664754ea1c053ee4fb2a6118">Alvaro</option>
+                  <option value="6647563cea3bdbd126b6976b">prueba</option>
+                  <option value="664f55ca34546b02a61e8d45">blanco</option>
+                </select>
+              </c-col>
+              <c-col xs="12">
+                <button (click)="guardarActividad()" cButton type="submit" color="success">Guardar</button>
+              </c-col>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  <!--creacion de TABLA DE ACTIVIDADES-->
+  <c-row>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Actividades </strong> <small>lista de actividades</small>
+        </c-card-header>
+        <c-card-body>
+            <table [hover]="true" cTable>
+              <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Actividad</th>
+                <th scope="col">Participantes</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acciones</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for(act of listaActividades; track act;){
+                  <tr>
+                    <th scope="row"></th>
+                    <td>{{act.actividad}}</td>
+                    <td>{{act.participantes}}</td>
+                    <td>{{act.fecha}}</td>
+                    <td>{{act.hora}}</td>
+                    <td>{{act.descripcion}}</td>
+                    <td><button cButton class="mb-3" color="ligth" variant="ghost" (click)="verActividad(act)" shape="rounded-pill"><img src="../../../../assets/images/editar.png" width="35px"/></button><button cButton class="mb-3" color="ligth"  shape="rounded-pill" variant="ghost" (click)="eliminarActividad(act)"><img src="../../../../assets/images/borrar.png" width="35px"/></button></td>
+                  </tr>
+                } 
+              </tbody>
+            </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>

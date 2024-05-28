@@ -1,0 +1,143 @@
+<!--formulario de busqueda por usuario-->
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Formulario Actividades</strong> 
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          LLenar los siguientes campos para crear una actividad.
+        </p>
+        <form cForm class="row g-3">
+          <c-col md="12">
+            <label cLabel for="usuario">Usuario</label>
+            <select name="usuario" [(ngModel)]="usuarioSeleccionado" cSelect id="usuario">
+              <option value="664754ea1c053ee4fb2a6118">Alvaro</option>
+              <option value="6647563cea3bdbd126b6976b">prueba</option>
+              <option value="664f55ca34546b02a61e8d45">blanco</option>
+            </select>
+          </c-col>
+          <c-col xs="12">
+            <button (click)="getActividadesPorUsuario()" cButton type="button" color="info">Consultar</button>
+          </c-col>
+        </form>
+        
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+<!--creacion de TABLA PARA REPORTES REPORTE 1-->
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Reporte 1 </strong> <small>lista de actividades por usuario</small>
+      </c-card-header>
+      <c-card-body>
+          <table [hover]="true" cTable>
+            <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Actividad</th>
+              <th scope="col">Participantes</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for(act of listaActividades1; track act;){
+                <tr>
+                  <th scope="row"></th>
+                  <td>{{act.actividad}}</td>
+                  <td>{{act.participantes}}</td>
+                  <td>{{act.fecha}}</td>
+                  <td>{{act.hora}}</td>
+                  <td>{{act.descripcion}}</td>
+                </tr>
+              } 
+            </tbody>
+          </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<!--formulario de busqueda por usuario-->
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Formulario Actividades</strong> 
+      </c-card-header>
+      <c-card-body>
+        <p class="text-body-secondary small">
+          LLenar los siguientes campos para crear una actividad.
+        </p>
+        <form cForm class="row g-3">
+          <c-col md="6">
+            <label cLabel for="tipo">Tipo</label>
+            <select name="tipo" [(ngModel)]="tipoActividadSeleccionado" cSelect id="tipo">
+              <option value="">Todos</option>
+              <option value="664f49d3f44e555556974f22">Social</option>
+              <option value="664f4a42f44e555556974f26">Pastoral</option>
+              <option value="664f4a1bf44e555556974f24">Pedagogico</option>
+              <option value="664f4a7ef44e555556974f28">Gratitud</option>
+            </select>
+          </c-col>
+          <c-col md="6">
+            <label cLabel for="responsable">Responsable</label>
+            <select name="responsable" [(ngModel)]="responsableSeleccionado" cSelect id="responsable">
+              <option value="">Todos</option>
+              <option value="664ea6dc9d5b56d4b72a28ff">Prof. Jhonatan</option>
+              <option value="664eb3f99d5b56d4b72a2907">Prof. Tania</option>
+              <option value="664eb54c9d5b56d4b72a290a">Prof. Naira</option>
+              <option value="664f510660a5792ba2d95616">Prof. Indira</option>
+            </select>
+          </c-col>
+          <c-col xs="12">
+            <button (click)="getActividadesPorResponsableTipo()" cButton type="button" color="info">Consultar</button>
+          </c-col>
+        </form>
+        
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+  <!--creacion de TABLA PARA REPORTES REPORTE 2-->
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Reporte 2 </strong> <small>Traer las actividades que tengan un responsable especifico y tipo</small>
+      </c-card-header>
+      <c-card-body>
+          <table [hover]="true" cTable>
+            <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Actividad</th>
+              <th scope="col">Participantes</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Descripción</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for(act of listaActividades2; track act;){
+                <tr>
+                  <th scope="row"></th>
+                  <td>{{act.actividad}}</td>
+                  <td>{{act.participantes}}</td>
+                  <td>{{act.fecha}}</td>
+                  <td>{{act.hora}}</td>
+                  <td>{{act.descripcion}}</td>
+                </tr>
+              } 
+            </tbody>
+          </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
